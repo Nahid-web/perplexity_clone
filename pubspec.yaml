@@ -1,0 +1,58 @@
+name: perplexity_clone
+description: "A Perplexity AI clone with responsive design"
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  # Responsive Design
+  flutter_screenutil: ^5.9.0
+  responsive_framework: ^1.1.1
+
+  # State Management
+  flutter_riverpod: ^2.4.9
+
+  # UI Components
+  google_fonts: ^6.1.0
+  flutter_markdown: ^0.6.18
+  flutter_svg: ^2.0.9
+  cached_network_image: ^3.3.1
+
+  # Navigation
+  go_router: ^13.1.0
+
+  # HTTP Client
+  dio: ^5.4.0
+
+  # Local Storage
+  shared_preferences: ^2.2.2
+
+  # Utils
+  intl: ^0.19.0
+  url_launcher: ^6.2.4
+  logger: ^2.0.2+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.8
+
+flutter:
+  uses-material-design: true
+
+  # To add assets later
+  # assets:
+  #   - assets/images/
+  #   - assets/icons/
+
+  # To add custom fonts later
+  # fonts:
+  #   - family: CustomFont
+  #     fonts:
+  #       - asset: assets/fonts/CustomFont-Regular.ttf
