@@ -14,13 +14,14 @@ class SearchService:
             search_results = response.get('results', [])
 
             for result in search_results:
+
                 download = trafilatura.fetch_url(result.get('url'))
                 content = trafilatura.extract(download, include_comments=False)
 
                 results.append({
                     "title": result.get('title', ''),
-                    "url": result.get('url'),
-                    "content": content,
+                    "url": result.get('url', ''),
+                    "content": content or '',
                 })
 
             return results
