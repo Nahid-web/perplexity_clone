@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                     } else if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
                     } else {
-                      fullResponse += snapshot.data?['content'] ?? '';
+                      fullResponse += snapshot.data?['data'] ?? '';
                       return Text(fullResponse);
                     }
                   },
