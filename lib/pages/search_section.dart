@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:perplexity_clone/services/chat_web_service.dart';
 import 'package:perplexity_clone/theme/colors.dart';
 import 'package:perplexity_clone/widgets/search_bar_button.dart';
 
@@ -12,6 +13,13 @@ class SearchSection extends StatefulWidget {
 
 class _SearchSectionState extends State<SearchSection> {
   final queryController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+
+    queryController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +80,9 @@ class _SearchSectionState extends State<SearchSection> {
                     ),
                     const Spacer(),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        ChatWebService().chat(queryController.text.trim());
+                      },
                       child: Container(
                         padding: EdgeInsets.all(9),
                         decoration: BoxDecoration(
