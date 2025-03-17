@@ -1,4 +1,6 @@
-from fastapi import FastAPI
+import asyncio
+import traceback
+from fastapi import FastAPI, WebSocket
 from pydantic_models.chat_body import ChatBody
 
 from pydantic_models.chat_body import ChatBody
@@ -13,10 +15,38 @@ search_service = SearchService()
 sort_source_service = SortSourceService()
 llm_service = LLMService()
 
+# chat websocket
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+
+@app.websocket("/ws/chat")
+async def websocket_chat_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        await asyncio.sleep(0/1)
+
+        data = await websocket.receive_json()
+        query = data.get("query")
+
+        search_results = search_service.web_search(query)
+
+        sorted_results = sort_source_service.sort_sources(
+            query, search_results)
+
+        await asyncio.sleep(0/1)
+
+        await websocket.send_json({"type": "search_results", "data": sorted_results})
+
+        for chunk in llm_service.generate_response(query, sorted_results):
+            await asyncio.sleep(0/1)
+            await websocket.send_json({"type": "response", "data": chunk})
+
+    except:
+        print("Unexpected error:")
+        traceback.print_exc()
+        await websocket.send_json({"type": "error", "data": "An error occurred on the server."})
+
+    finally:
+        await websocket.close()
 
 
 @app.post("/chat")

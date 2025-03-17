@@ -30,7 +30,5 @@ class LLMService:
 
         response = self.model.generate_content(full_prompt, stream=True)
 
-        aggregated_response = ""
         for chunk in response:
-            aggregated_response += chunk.text
-        return aggregated_response
+            yield chunk.text
