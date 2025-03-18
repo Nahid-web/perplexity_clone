@@ -88,7 +88,7 @@ server/
 ├── pydantic_models/          # Data validation models
 │   └── chat_body.py          # Chat request model
 ├── .env                      # Environment variables
-
+└── requirements.txt          # Python dependencies
 ```
 
 **Frameworks and Libraries:**
@@ -142,16 +142,22 @@ Required variables in `.env` file:
    .venv\Scripts\activate     # On Windows
    ```
 
-4. **Create a `.env` file with your API keys:**
+4. **Install the dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Create a `.env` file with your API keys:**
 
    ```
    TAVILY_API_KEY=<your_tavily_api_key>
    GEMINI_API_KEY=<your_gemini_api_key>
    ```
 
-5. **Run the server:**
+6. **Run the server:**
    ```bash
-   python main.py
+   fastapi dev main.py
    ```
 
 ### Frontend Setup (Flutter)
