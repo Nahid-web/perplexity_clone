@@ -27,17 +27,22 @@ async def websocket_chat_endpoint(websocket: WebSocket):
 
         data = await websocket.receive_json()
         query = data.get("query")
+        print(query)
 
         search_results = search_service.web_search(query)
 
+        print("search result completed")
+
         sorted_results = sort_source_service.sort_sources(
             query, search_results)
+        print("sort result completed")
 
         await asyncio.sleep(0/1)
 
         await websocket.send_json({"type": "search_results", "data": sorted_results})
 
         for chunk in llm_service.generate_response(query, sorted_results):
+            print(f'Sending chunk: {chunk}')
             await asyncio.sleep(0/1)
             await websocket.send_json({"type": "response", "data": chunk})
 
@@ -54,10 +59,14 @@ async def websocket_chat_endpoint(websocket: WebSocket):
 def chat_endpoint(body: ChatBody):
     search_results = search_service.web_search(body.query)
 
+    # print(f'Search results: {search_results}')
+
     sorted_results = sort_source_service.sort_sources(
         body.query, search_results)
 
+    print(f'Sorted results: {sorted_results}')
+
     response = llm_service.generate_response(body.query, sorted_results)
-    print(response)
+    print(f'Response: {response}')
 
     return response

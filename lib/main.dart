@@ -17,9 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Perplexity Clone',
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.background,
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: AppColors.submitButton,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.submitButton),
         textTheme: GoogleFonts.interTextTheme(
           ThemeData.dark().textTheme.copyWith(
             bodyMedium: const TextStyle(
