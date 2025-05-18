@@ -137,9 +137,9 @@ Required variables in `.env` file:
 3. **Create a virtual environment:**
 
    ```bash
-   python3 -m venv .venv
+   python3 -m venv venv
    source .venv/bin/activate  # On Linux/macOS
-   .venv\Scripts\activate     # On Windows
+   \venv\Scripts\Activate    # On Windows
    ```
 
 4. **Install the dependencies:**
@@ -197,3 +197,7 @@ Contributions are welcome! Please feel free to open issues or submit pull reques
 ## License
 
 MIT License
+
+## GitHub Repository
+
+[https://github.com/Nahid-web/perplexity_clone](https://github.com/Nahid-web/perplexity_clone)
