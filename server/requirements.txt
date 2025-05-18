@@ -2,6 +2,7 @@ python-dotenv
 pydantic-settings
 fastapi
 uvicorn
+gunicorn
 pydantic
 google-generativeai
 tavily-python
