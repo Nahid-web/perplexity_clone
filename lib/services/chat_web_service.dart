@@ -18,7 +18,7 @@ class ChatWebService {
   Stream<Map<String, dynamic>> get contentStream => _contentController.stream;
 
   void connect() {
-    _socket = WebSocket(Uri.parse("ws://localhost:8000/ws/chat"));
+    _socket = WebSocket(Uri.parse("wss://perplexity-clone-9fxb.onrender.com/ws/chat"));
 
     _socket!.messages.listen((message) {
       final data = json.decode(message);

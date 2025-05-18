@@ -9,3 +9,5 @@ tavily-python
 trafilatura
 sentence-transformers
 numpy
+uvicorn[standard]
+websockets
